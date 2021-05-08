@@ -1,6 +1,5 @@
 package com.aman.exam7.controllers;
 
-import com.aman.exam7.dto.RestaurantDto;
 import com.aman.exam7.entity.Restaurant;
 import com.aman.exam7.repositories.RestaurantRepositories;
 import com.aman.exam7.services.RestourantService;
@@ -11,10 +10,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.awt.print.Pageable;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/restaurant")
