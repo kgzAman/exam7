@@ -1,12 +1,12 @@
 package com.aman.exam7.repositories;
 
+import com.aman.exam7.entity.Dish;
 import com.aman.exam7.entity.Restaurant;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface RestaurantRepositories extends MongoRepository<Restaurant, String> {
+public interface DishRepositories extends MongoRepository<Dish,String> {
 
-    List<Restaurant>findByNameRestaurant(String name);
-
+    List<Dish> findByRestaurant(List<Restaurant> restaurant);
 }

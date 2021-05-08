@@ -5,11 +5,11 @@ import com.aman.exam7.repositories.RestaurantRepositories;
 import com.aman.exam7.services.RestourantService;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,8 +29,8 @@ public class RestaurantControllers {
     }
 
     @GetMapping()
-    public List<RestaurantDto> getAllInstitution(Pageable pageable){
-       return  this.restaurantRepositories.findAll(pageable)
+    public List<RestaurantDto> getAllRestaurant(Pageable pageable){
+       return  this.restourantService.getAllRestaurant(pageable)
                .stream().map(restaurant -> modelMapper.map(restaurant, RestaurantDto.class))
                .collect(Collectors.toList());
     }

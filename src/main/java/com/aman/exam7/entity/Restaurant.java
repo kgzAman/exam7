@@ -11,6 +11,6 @@ public class Restaurant {
     @Id
     private String id;
 
-    private String nameInstitution;
+    private String nameRestaurant;
     private String description;
 }

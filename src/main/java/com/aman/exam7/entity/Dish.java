@@ -13,7 +13,7 @@ public class Dish {
     private String id;
 
     @DBRef
-    private Restaurant institution;
+    private Restaurant restaurant;
 
     private String name;
     private Type type;
