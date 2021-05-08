@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 
 @Builder
 @Data
-public class Institution {
+public class Restaurant {
 
     @Id
     private String id;

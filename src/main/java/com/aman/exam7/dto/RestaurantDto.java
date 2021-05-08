@@ -1,4 +1,4 @@
 package com.aman.exam7.dto;
 
-public class InstitutionDto {
+public class RestaurantDto {
 }
