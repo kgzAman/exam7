@@ -6,6 +6,8 @@ import com.aman.exam7.entity.User;
 import com.aman.exam7.repositories.OrderRepository;
 import com.aman.exam7.services.OrderService;
 import lombok.Data;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +33,8 @@ public class OrderController {
     }
 
     @GetMapping("/UserOrders")
-    public List<Order> allOrder(String userId){
-        return this.orderService.findByOrderedUser(userId);
+    public Page<Order> allOrder(String userId, Pageable pageable){
+
+        return this.orderService.findByOrderedUser(userId,pageable);
     }
 }

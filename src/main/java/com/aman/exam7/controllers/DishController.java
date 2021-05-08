@@ -1,7 +1,6 @@
 package com.aman.exam7.controllers;
 
 import com.aman.exam7.dto.DishDto;
-import com.aman.exam7.entity.Dish;
 import com.aman.exam7.repositories.DishRepositories;
 import com.aman.exam7.services.DishService;
 import lombok.Data;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.awt.print.Pageable;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -25,9 +25,9 @@ public class DishController {
     private final DishRepositories dishRepositories;
     private final DishService dishService;
 
-    @GetMapping("/placesFrom")
-    public Optional<Dish> getAllDishByRestaurant(@PathVariable String restaurantId, Pageable pageable){
-        return  this.dishService.getAllDishByRestaurant(restaurantId,pageable);
+    @GetMapping()
+    public Optional<DishDto> getAllDishByRestaurant(@PathVariable String restaurantId, Pageable pageable){
+        return  this.dishService.getAllDishByRestaurant(restaurantId, pageable );
 
     }
 

@@ -1,5 +1,6 @@
 package com.aman.exam7.repositories;
 
+import com.aman.exam7.dto.DishDto;
 import com.aman.exam7.entity.Dish;
 import com.aman.exam7.entity.Restaurant;
 import org.springframework.data.domain.Page;
@@ -10,7 +11,7 @@ import java.util.Optional;
 
 public interface DishRepositories extends MongoRepository<Dish,String> {
 
-    Optional<Dish> findByRestaurant(String id, Pageable pa);
-
+    Optional<DishDto> findByRestaurant(String id);
+    Optional<DishDto>findByRestaurant(String resId,Pageable pageable);
 
 }

@@ -3,7 +3,6 @@ package com.aman.exam7.services;
 
 import com.aman.exam7.dto.DishDto;
 import com.aman.exam7.entity.Dish;
-import com.aman.exam7.entity.Restaurant;
 import com.aman.exam7.repositories.DishRepositories;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,8 +26,9 @@ public class DishService {
         this.dishRepositories = dishRepositories;
     }
 
-    public Optional<Dish> getAllDishByRestaurant(String resId, Pageable pageable){
-        return this.dishRepositories.findByRestaurant(resId,pageable);
+    public Optional<DishDto> getAllDishByRestaurant(String resId, Pageable pageable){
+         return this.dishRepositories.findByRestaurant(resId,pageable);
+
     }
 
 
