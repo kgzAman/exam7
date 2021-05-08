@@ -3,19 +3,20 @@ package com.aman.exam7.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 @Data
-@Document("users")
 @Builder
 @AllArgsConstructor
 @EqualsAndHashCode
+@Document(collection = "user")
 public class User implements UserDetails {
 
     @Id

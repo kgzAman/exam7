@@ -34,11 +34,4 @@ public class UserService implements UserDetailsService {
         return byName.orElseGet(() -> this.userRepositories.save(user));
     }
 
-    public Boolean checkIfExist(String email){
-        return userRepositories.existsByEAndEmail(email);
-    }
-
-    public Optional<User> byEmail(String email){
-        return userRepositories.findByEmail(email);
-    }
 }
