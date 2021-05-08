@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class OrderController {
     }
 
     @GetMapping("/UserOrders")
-    public Page<Order> allOrder(String userId, Pageable pageable){
+    public Page<Order> allOrder(@PathVariable String userId, @ApiIgnore Pageable pageable){
 
         return this.orderService.findByOrderedUser(userId,pageable);
     }
