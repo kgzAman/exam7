@@ -1,10 +1,39 @@
 package com.aman.exam7.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.aman.exam7.dto.OrderDto;
+import com.aman.exam7.entity.Order;
+import com.aman.exam7.entity.User;
+import com.aman.exam7.repositories.OrderRepository;
+import com.aman.exam7.services.OrderService;
+import lombok.Data;
+import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("api/orders")
+@RequestMapping("api/user")
+@Data
 public class OrderController {
 
+    private OrderRepository orderRepositories;
+    private OrderService orderService;
+
+    @PostMapping("/order")
+    public String order( @RequestBody OrderDto orderDto, String resName,Authentication authentication){
+        User user = (User)authentication.getPrincipal();
+        Order order =Order.builder()
+                .orderedUser(user)
+                .orderedDish(orderDto.getOrderedDish())
+                .localDateTime(orderDto.getLocalDateTime())
+                .build();
+        return this.orderService.makeOrder(order).getId();
+    }
+
+    @GetMapping("/UserOrders")
+    public List<Order> allOrder(String userId){
+        return this.orderService.findByOrderedUser(userId);
+    }
 }

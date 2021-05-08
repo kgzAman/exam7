@@ -1,15 +1,18 @@
 package com.aman.exam7.services;
 
 
+import com.aman.exam7.dto.DishDto;
 import com.aman.exam7.entity.Dish;
 import com.aman.exam7.entity.Restaurant;
 import com.aman.exam7.repositories.DishRepositories;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @NoArgsConstructor
@@ -24,9 +27,8 @@ public class DishService {
         this.dishRepositories = dishRepositories;
     }
 
-    public List<Dish> getAllDishByRestaurant(Pageable pageable){
-        final List<Restaurant> restaurantsByName = this.restourantService.getAllRestaurant(pageable);
-        return this.dishRepositories.findByRestaurant(restaurantsByName);
+    public Optional<Dish> getAllDishByRestaurant(String resId, Pageable pageable){
+        return this.dishRepositories.findByRestaurant(resId,pageable);
     }
 
 

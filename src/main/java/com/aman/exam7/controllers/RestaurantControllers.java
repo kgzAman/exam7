@@ -1,10 +1,13 @@
 package com.aman.exam7.controllers;
 
 import com.aman.exam7.dto.RestaurantDto;
+import com.aman.exam7.entity.Restaurant;
 import com.aman.exam7.repositories.RestaurantRepositories;
 import com.aman.exam7.services.RestourantService;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/institutions")
+@RequestMapping("api/restaurant")
 @Data
 public class RestaurantControllers {
 
@@ -29,10 +32,8 @@ public class RestaurantControllers {
     }
 
     @GetMapping()
-    public List<RestaurantDto> getAllRestaurant(Pageable pageable){
-       return  this.restourantService.getAllRestaurant(pageable)
-               .stream().map(restaurant -> modelMapper.map(restaurant, RestaurantDto.class))
-               .collect(Collectors.toList());
+    public Page<Restaurant> getAllRestaurant(){
+        return new PageImpl<Restaurant>(this.restaurantRepositories.findAll());
     }
 
 
